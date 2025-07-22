@@ -11,7 +11,10 @@ TAG="v$VERSION"
 
 # Step 1: Bump version
 echo "🔧 Bumping version to $VERSION..."
-./bump-version.sh "$VERSION"
+# Get absolute path to directory this script lives in
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Then you can safely call sibling scripts like:
+"$SCRIPT_DIR/bump-version.sh" "$VERSION"
 
 # Step 2: Git commit
 echo "📦 Committing version bump..."
