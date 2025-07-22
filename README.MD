@@ -2,6 +2,8 @@
 
 A lightweight, privacy-respecting Firefox extension that extracts video links from TikTok collection pages and downloads them as a JSON file.
 
+Intended to work with [TikTok Recipe Builder](https://github.com/bigwhitetuna/TikTok-Recipe-Builder) as it is completed.
+
 ## Features
 
 - Extracts all video links from the current TikTok collection page
