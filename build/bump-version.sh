@@ -7,10 +7,10 @@ if [ -z "$VERSION" ]; then
   exit 1
 fi
 
-echo "🔧 Bumping version to $VERSION in manifest.v2.json"
-jq ".version = \"$VERSION\"" manifest.v2.json > tmp.v2.json && mv tmp.v2.json manifest.v2.json
+echo "🔧 Bumping version to $VERSION in manifest.firefox.json"
+jq ".version = \"$VERSION\"" manifest.firefox.json > tmp.firefox.json && mv tmp.firefox.json manifest.firefox.json
 
-echo "🔧 Bumping version to $VERSION in manifest.v3.json"
-jq ".version = \"$VERSION\"" manifest.v3.json > tmp.v3.json && mv tmp.v3.json manifest.v3.json
+echo "🔧 Bumping version to $VERSION in manifest.chrome.json"
+jq ".version = \"$VERSION\"" manifest.chrome.json > tmp.chrome.json && mv tmp.chrome.json manifest.chrome.json
 
 echo "✅ Updated both manifest versions to $VERSION"

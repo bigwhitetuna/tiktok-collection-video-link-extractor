@@ -70,14 +70,28 @@ This project uses minimal tooling and can be run or extended easily.
 
 ### ⚙️ Scripts
 
+#### release.sh
+
+Accepts a version # as an argument
+
+```bash
+build/release.sh v1.0.5
+```
+
+Does the following:
+- Bumps versions in each manifest doc to specified version
+- git commits the version #
+- git tags w/ version #
+- git push w/ tag (to trigger release build in github actions)
+
 #### 🔧 `build.sh`
-Creates a ZIP of the current extension based on the `manifest.json` version.
+Creates a ZIP of the current extension based on the `manifest.json` version. This is an optional script for generating local zips for testing.
 
 ```bash
 ./build/build.sh
 ```
 
-Outputs:
+Outputs a file for both chrome and firefox:
 ```bash
 tiktok-video-link-extractor-v1.2.0.zip
 ```
@@ -94,9 +108,8 @@ Use before creating a release - syncs your manifest version with GitHub Actions 
 ### 🚀 GitHub Actions
 
 When you push a version tag (e.g. v1.2.0), a GitHub Action will:
-- Bump manifest.json
-- Generate a tiktok-video-link-extractor-v1.2.0.zip
-- Publish a release with your changelog from recent commits
+- Create a zip for both Chrome and Firefox upload, using unique manifests.<browser>.json to make the required manifest.json file
+- Add both files to newest release, based on tag version pushed
 
 No manual zipping or upload needed.
 
