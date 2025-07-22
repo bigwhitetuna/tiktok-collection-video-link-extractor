@@ -18,7 +18,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Step 2: Git commit
 echo "📦 Committing version bump..."
-git add manifest.v2.json manifest.v3.json
+git add manifest.firefox.json manifest.chrome.json
 git commit -m "🔖 Bump version to $VERSION"
 
 # Step 3: Create Git tag
