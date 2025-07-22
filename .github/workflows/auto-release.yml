@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "📦 Preparing Firefox build..."
           cp manifest.firefox.json manifest.json
-          zip -r tiktok-link-extractor-firefox.zip \
+          zip -r tiktok-video-link-extractor-firefox.zip \
             manifest.json \
             background.js \
             content.js \
@@ -29,7 +29,7 @@ jobs:
 
           echo "📦 Preparing Chrome build..."
           cp manifest.chrome.json manifest.json
-          zip -r tiktok-link-extractor-chrome.zip \
+          zip -r tiktok-video-link-extractor-chrome.zip \
             manifest.json \
             background.js \
             content.js \
