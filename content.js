@@ -4,57 +4,58 @@
 
   // Alerts
   function showToast(message, duration = 5000) {
-  // Ensure a container exists
-  let container = document.getElementById("tiktok-toast-container");
-  if (!container) {
-    container = document.createElement("div");
-    container.id = "tiktok-toast-container";
-    container.style.cssText = `
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 9999;
+    // Ensure a container exists
+    let container = document.getElementById("tiktok-toast-container");
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "tiktok-toast-container";
+      container.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 9999;
+      `;
+      document.body.appendChild(container);
+    }
+
+    // Create individual toast
+    const toast = document.createElement("div");
+    toast.textContent = message;
+    toast.style.cssText = `
+      background-color: #323232;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 500;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
+      max-width: 280px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.2s ease-out, transform 0.2s ease-out;
     `;
-    document.body.appendChild(container);
+
+    container.appendChild(toast);
+
+    // Animate in
+    requestAnimationFrame(() => {
+      toast.style.opacity = "1";
+      toast.style.transform = "translateY(0)";
+    });
+
+    // Remove after delay
+    setTimeout(() => {
+      toast.style.opacity = "0";
+      toast.style.transform = "translateY(-10px)";
+      setTimeout(() => toast.remove(), 200); // remove after fade out
+    }, duration);
   }
 
-  // Create individual toast
-  const toast = document.createElement("div");
-  toast.textContent = message;
-  toast.style.cssText = `
-    background-color: #323232;
-    color: #fff;
-    padding: 14px 20px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25);
-    max-width: 280px;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-  `;
-
-  container.appendChild(toast);
-
-  // Animate in
-  requestAnimationFrame(() => {
-    toast.style.opacity = "1";
-    toast.style.transform = "translateY(0)";
-  });
-
-  // Remove after delay
-  setTimeout(() => {
-    toast.style.opacity = "0";
-    toast.style.transform = "translateY(-10px)";
-    setTimeout(() => toast.remove(), 200); // remove after fade out
-  }, duration);
-}
-
-
+  let uniqueLinks = [];
+  
     // Collect all anchor hrefs
   try{
     const links = Array.from(document.querySelectorAll("a"))

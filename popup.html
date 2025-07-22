@@ -1,24 +1,89 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 12px;
-      width: 250px;
-    }
-    button {
-      margin-top: 10px;
-      padding: 6px 12px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h3>Extract TikTok Links</h3>
-  <p>Scroll to the bottom of the TikTok page until no more videos load, then click below:</p>
-  <button id="extract">Download Links</button>
-  <script src="popup.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TikTok Link Extractor</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 16px;
+        width: 280px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background-color: #1e1e1e;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      h1 {
+        font-size: 16px;
+        margin: 0;
+        color: #ffffff;
+      }
+
+      p {
+        font-size: 14px;
+        margin: 0;
+        line-height: 1.4;
+        color: #cccccc;
+      }
+
+      button {
+        margin-top: 8px;
+        padding: 10px 16px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      button:hover {
+        background-color: #45a045;
+      }
+
+      button:disabled {
+        opacity: 0.6;
+      }
+
+      footer {
+        font-size: 11px;
+        color: #666;
+        margin-top: auto;
+        text-align: center;
+      }
+
+      footer a {
+        color: #4fc3f7;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎯 TikTok Link Extractor</h1>
+    <p>
+      Scroll to the bottom of the TikTok page to load all videos, then click
+      below to extract links and download them.
+    </p>
+    <button id="extract">📥 Download TikTok Links</button>
+
+    <footer>
+      <a
+        href="https://github.com/bigwhitetuna/tiktok-collection-video-link-extractor"
+        target="_blank"
+        >GitHub</a
+      >
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
 </html>
