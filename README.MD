@@ -29,7 +29,7 @@ Coming soon to:
 
 For now, you can install it manually:
 
-- [Direct Download (ZIP)](https://github.com/bigwhitetuna/tiktok-collection-video-link-extractor/releases/latest)
+- [Direct Download (ZIP)](https://github.com/bigwhitetuna/tiktok-link-extractor/releases/latest)
 
 ### Temporary Install (Firefox)
 
