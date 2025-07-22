@@ -13,9 +13,11 @@ jobs:
       - name: 🧾 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🧳 Zip extension files
+      - name: 🧳 Build Firefox and Chrome extension zips
         run: |
-          zip -r tiktok-link-extractor.zip \
+          echo "📦 Preparing Firefox build..."
+          cp manifest.firefox.json manifest.json
+          zip -r tiktok-link-extractor-firefox.zip \
             manifest.json \
             background.js \
             content.js \
@@ -23,12 +25,27 @@ jobs:
             popup.js \
             icon.png \
             -x "*.DS_Store"
+          rm manifest.json
 
-      - name: 🚀 Create GitHub release & upload zip
+          echo "📦 Preparing Chrome build..."
+          cp manifest.chrome.json manifest.json
+          zip -r tiktok-link-extractor-chrome.zip \
+            manifest.json \
+            background.js \
+            content.js \
+            popup.html \
+            popup.js \
+            icon.png \
+            -x "*.DS_Store"
+          rm manifest.json
+
+      - name: 🚀 Create GitHub release & upload zips
         uses: softprops/action-gh-release@v1
         with:
           name: Release ${{ github.ref_name }}
           tag_name: ${{ github.ref_name }}
-          files: tiktok-link-extractor.zip
+          files: |
+            tiktok-link-extractor-firefox.zip
+            tiktok-link-extractor-chrome.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
